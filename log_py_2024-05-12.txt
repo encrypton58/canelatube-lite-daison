@@ -1,0 +1,6 @@
+Cached in: "BaseException"
+Because Error: "[Errno 2] No such file or directory: '/mnt/d/devsarrollos/web_api_rest/canelatube-lite/public/downloads/images/tmp_image3625.jpg'"
+Data: Url="https://www.youtube.com/watch?v=oaRTMjLdiDw&list=RDGMEMCMFH2exzjBeE_zAHHJOdxgVMoaRTMjLdiDw&start_radio=1", Itag="250"
+Date: 2024-05-12
+Hour: 01:42
+

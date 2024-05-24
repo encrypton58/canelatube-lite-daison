@@ -1,0 +1,5 @@
+
+export default {
+    HTTP_CODE_SERVER_ERROR: 500,
+    HTTP_COE_BAD_REQUEST: 400
+}
