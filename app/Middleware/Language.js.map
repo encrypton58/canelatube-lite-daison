@@ -1,0 +1,1 @@
+{"version":3,"file":"Language.js","sourceRoot":"","sources":["../../../app/Middleware/Language.ts"],"names":[],"mappings":";;;;;AACA,+GAAgE;AAEhE,MAAqB,QAAQ;IACpB,KAAK,CAAC,MAAM,CAAC,EAAE,OAAO,EAAuB,EAAE,IAAyB;QAC7E,4BAAkB,CAAC,QAAQ,GAAG,OAAO,CAAC,OAAO,EAAE,CAAC,QAAQ,EAAE,QAAQ,EAAE,IAAI,IAAI,CAAA;QAC5E,MAAM,IAAI,EAAE,CAAA;IACd,CAAC;CACF;AALD,2BAKC"}
