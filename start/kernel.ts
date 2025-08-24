@@ -40,6 +40,4 @@ Server.middleware.register([
 | Route.get('dashboard', 'UserController.dashboard').middleware('auth')
 |
 */
-Server.middleware.registerNamed({
-  lenguage: () => import('App/Middleware/Language')
-})
+Server.middleware.registerNamed({})

@@ -21,13 +21,5 @@
 import Route from "@ioc:Adonis/Core/Route";
 
 Route.group(() => {
-  Route.get("/onichan", "MusicController.show");
-  Route.post("/onichan", "MusicController.create");
-  Route.delete("/onichan/:id", "MusicController.destroy");
-})
-  .prefix("api/v1")
-  .middleware("lenguage");
-
-Route.get("errors/:rule", "MusicController.infoFromErrors").middleware(
-  "lenguage"
-);
+  Route.post("/lyrics", "LyricsController.index");
+});
