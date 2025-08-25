@@ -1,11 +1,23 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import HttpConstants from 'App/Constants/HttpConstants'
+import ServerConstants from 'App/Constants/ServerConstants'
+import StatusConstanst from 'App/Constants/StatusConstanst'
+import BadRequestException from 'App/Exceptions/BadRequestException'
+import ErrorResponse from 'App/Models/ErrorResponse'
+import MessageManager from 'App/Utils/MessageManager'
 import { romanizeLine } from 'App/Utils/Romaji'
 
 export default class LyricsController {
     public async index({ request, response }: HttpContextContract) {
         let lyrics = request.body().lyrics
         if (!lyrics && !this.isLrcFormat(lyrics)) {
-            return response.status(400).json({ error: 'Invalid or missing lyrics in LRC format' })
+            const errorResponse = new ErrorResponse(
+                ServerConstants.E_BAD_REQUEST,
+                MessageManager.fieldsRequired(),
+                HttpConstants.BAD_REQUEST_CODE,
+                MessageManager.fieldsRequiredDetails()
+            )
+            throw new BadRequestException(errorResponse)
         }
 
         const lines = lyrics.split("\n").map(line => {
@@ -14,7 +26,13 @@ export default class LyricsController {
         }).filter(Boolean)
 
         if (lines.length === 0) {
-            return response.status(400).json({ error: 'Invalid or missing lyrics in LRC format' })
+            const errorResponse = new ErrorResponse(
+                ServerConstants.E_BAD_REQUEST,
+                MessageManager.contentTypeNotAllowed(),
+                HttpConstants.BAD_REQUEST_CODE,
+                MessageManager.contentTypeNotAllowedDetails()
+            )
+            throw new BadRequestException(errorResponse)
         }
 
         const allText = lines.map((l: { text: string }) => l.text).join("\n")
@@ -27,9 +45,9 @@ export default class LyricsController {
             return `[${line.time}] ${txt}`
         }).join("\n")
 
-        return response.status(200).json({
-            statusCode: 0,
-            message: 'Success',
+        return response.status(HttpConstants.SUCCESS_CODE).json({
+            statusCode: StatusConstanst.SUCCESS_STATUS_CODE,
+            message: MessageManager.success(),
             resultSet: {
                 lyrics: lrc
             }

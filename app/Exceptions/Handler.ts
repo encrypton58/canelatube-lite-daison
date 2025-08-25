@@ -15,6 +15,9 @@
 
 import Logger from "@ioc:Adonis/Core/Logger";
 import HttpExceptionHandler from "@ioc:Adonis/Core/HttpExceptionHandler";
+import HttpConstants from "App/Constants/HttpConstants";
+import ServerConstants from "App/Constants/ServerConstants";
+import BadRequestException from "./BadRequestException";
 
 export default class ExceptionHandler extends HttpExceptionHandler {
   constructor() {
@@ -22,6 +25,13 @@ export default class ExceptionHandler extends HttpExceptionHandler {
   }
 
   public async handle(error, ctx) {
+
+    if (error.code == ServerConstants.E_BAD_REQUEST) {
+      return ctx.response.status(HttpConstants.BAD_REQUEST_CODE).json(
+        (error as BadRequestException).errorResponse
+      )
+    }
+
     return super.handle(error, ctx);
   }
 }
