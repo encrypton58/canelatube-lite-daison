@@ -25,6 +25,11 @@ const plainLyrics = {
   lyrics: "Babe I love U\nBabe I miss U\nBabe I want U\nDear 未来のダーリン\n\n24h 頭ん中キミのことばっか\nメイク中も眠る3秒前も考えちゃう\nあぁ何も手につかない\n明日も朝早いのに\n\nふと見たストーリーに写る可愛いすぎな Girl\nねぇ誰なの？Oh my god\n聞けるわけないじゃん\nモヤモヤ ありえない\nいっそ諦めたなら楽になれんのかな\n\nむり むり むり\n諦めんのやめた\nLove U Love U Love U\n止まんないの\nそもそもだけど\nこの気持ち気付いてないのまだ!?\n\n今すぐ会いたいや キミに会いたいや\nすぐ伝えたいや 気持ち伝えたいんだ\n誰かにとられたくない\n私の未来のダーリン\nとにかく会いたいや キミに会えたならきっと\n今なら好きって言えそうな気がする\nねぇ好きだよ 大好きだよ\n誰にもあげない\n私の未来のダーリン\n\nBabe I love U\n気付いてよ\nBabe I miss U\n振り向いて\nBabe I want U\n誰にもあげない\n私の未来のダーリン"
 }
 
+const emptyLyrics = {
+  isSync: true,
+  lyrics: "lksfijssldaskmidng"
+}
+
 const otherThingSend = {
   'test': true
 }
@@ -75,6 +80,11 @@ test.group('Lyrics', () => {
   test('Plain lyrics', async ({ client }) => {
     const response = await client.post('api/v1/lyrics').json(plainLyrics).header('accept-language', 'es')
     response.assertStatus(200)
+  }).tags(['romanized'])
+
+  test('Empty lyrics other', async ({ client }) => {
+    const response = await client.post('api/v1/lyrics').json(emptyLyrics).header('accept-language', 'es')
+    response.assertStatus(400)
   }).tags(['romanized'])
 
 })

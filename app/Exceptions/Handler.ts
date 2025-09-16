@@ -21,8 +21,6 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import BadRequestException from "./BadRequestException";
 import ErrorResponse from "App/Models/ErrorResponse";
 import MessageManager from "App/Utils/MessageManager";
-import ErrorMoreDetail from "App/Models/ErrorMoreDetail";
-import ErrorDetailModel from "App/Models/ErrorDetailModel";
 
 export default class ExceptionHandler extends HttpExceptionHandler {
   constructor() {

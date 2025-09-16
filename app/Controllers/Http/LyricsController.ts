@@ -24,12 +24,12 @@ export default class LyricsController {
 
         if (isSync) {
             if (!this.isLrcFormat(lyrics)) {
-                return this.badRequest(response);
+                return this.badRequest();
             }
 
             const lines = this.parseLrcLines(lyrics);
             if (!lines.length) {
-                return this.badRequest(response);
+                return this.badRequest();
             }
 
             const romanized = await romanizeLine(lines.map(l => l.text).join('\n'));
@@ -67,7 +67,7 @@ export default class LyricsController {
         }, []);
     }
 
-    private badRequest(response: HttpContextContract['response']) {
+    private badRequest() {
         const errorResponse = new ErrorResponse(
             ServerConstants.E_BAD_REQUEST,
             MessageManager.contentTypeNotAllowed(),
