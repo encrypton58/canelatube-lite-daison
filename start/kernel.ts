@@ -41,5 +41,6 @@ Server.middleware.register([
 |
 */
 Server.middleware.registerNamed({
-  language: () => import('App/Middleware/Language')
+  language: () => import('App/Middleware/Language'),
+  apiKey: () => import('App/Middleware/ApiKeyMiddleware')
 })

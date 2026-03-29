@@ -35,6 +35,16 @@ export default class ExceptionHandler extends HttpExceptionHandler {
       )
     }
 
+    if (error.code == ServerConstants.E_UNAUTHORIZED) {
+      const errorResponse = new ErrorResponse(
+        ServerConstants.E_UNAUTHORIZED,
+        MessageManager.unauthorized(),
+        ctx.response.getStatus(),
+        MessageManager.unauthorizedDetails()
+      )
+      return ctx.response.status(HttpConstants.UNAUTHORIZED_CODE).json(errorResponse)
+    }
+
     if (ctx.response.getStatus() == HttpConstants.UNPROCESSABLE_ENTITY_CODE_HTTP) {
       const errorResponse = new ErrorResponse(
         ServerConstants.E_FIELDS_REQUIRED_CODE,

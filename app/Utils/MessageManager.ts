@@ -76,6 +76,28 @@ export default {
             default:
                 return `The information was obtained correctly 😎`
         }
+    },
+
+    unauthorized(): string {
+        switch (this.language) {
+            case 'es':
+                return `No estás autorizado para acceder a este recurso 🚫`
+            case 'en':
+                return `You are not authorized to access this resource 🚫`
+            default:
+                return `You are not authorized to access this resource 🚫`
+        }
+    },
+
+    unauthorizedDetails(): string {
+        switch (this.language) {
+            case 'es':
+                return `Parece que no tienes los permisos necesarios para acceder a este recurso 🚫`
+            case 'en':
+                return `It seems you don't have the necessary permissions to access this resource 🚫`
+            default:
+                return `It seems you don't have the necessary permissions to access this resource 🚫`
+        }
     }
 
 }

@@ -22,6 +22,6 @@ import Route from "@ioc:Adonis/Core/Route";
 
 Route.group(() => {
   Route.group(() => {
-    Route.post("/lyrics", "LyricsController.index")
+    Route.post("/lyrics", "LyricsController.index").middleware('apiKey')
   }).prefix("v1").middleware('language')
 }).prefix("api")
